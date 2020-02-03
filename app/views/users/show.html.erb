@@ -38,7 +38,8 @@
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
                     label: "Confirm your new password",
-                    input_html: { autocomplete: "new-password" } %>
+                    input_html: { autocomplete: "new-password" },
+                    hint: "You will be disconnected if you successfully change your password." %>
         <%= f.button :submit,
                      value: 'Update password',
                      "data-disable-with" => "Creating..",
