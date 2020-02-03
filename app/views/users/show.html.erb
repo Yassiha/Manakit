@@ -1,21 +1,49 @@
 <br>
 <div class="container">
-  <div class="card">
-
-    <div class="form">
+  <div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <%= link_to " Delete account",
+            @user,
+            method: :delete,
+            data: { confirm: 'Are you sure?', disable_with: 'loading...' },
+            class: 'nav-link far fa-trash-alt bigger-icon' %>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <br>
+    <h2 class="card-title fas fa-user"> Update username </h4>
+    <p class="card-text">
       <%= simple_form_for @user, url: user_path(@user), method: :patch do |f| %>
-        <%= f.input :name, label: 'Username:', required: true%>
+        <%= f.input :name,
+                    label: 'Username:',
+                    required: true %>
+        <%= f.button :submit,
+                     value: 'Update name',
+                     "data-disable-with" => "Creating..",
+                     class: "btn btn-outline-primary" %>
+        <% end %>
+      </p>
+    </p>
+    <br><hr><br>
+    <h2 class="card-title fas fa-key"> Update password </h2>
+    <p class="card-text">
+      <%= simple_form_for @user, url: user_path(@user), method: :patch do |f| %>
         <%= f.input :reset_password_token, as: :hidden %>
         <%= f.input :password,
                     label: "New password",
-                        autofocus: true,
-                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                        input_html: { autocomplete: "new-password" } %>
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
-                        label: "Confirm your new password",
-                        input_html: { autocomplete: "new-password" } %>
-      <%= f.button :submit, value: 'Update name', "data-disable-with" => "Creating..", class: "btn btn-outline-primary" %></p>
+                    label: "Confirm your new password",
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.button :submit,
+                     value: 'Update password',
+                     "data-disable-with" => "Creating..",
+                     class: "btn btn-outline-primary" %>
       <% end %>
-          <%= link_to "Delete account", @user, method: :delete, data: { confirm: 'WARNING you will delete an entire Project!', disable_with: 'loading...' } %> </div>
+    </p>
   </div>
 </div>
