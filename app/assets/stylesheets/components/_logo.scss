@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Indie Flower', cursive;
     margin-right: 24px;
     margin-left: 24px;
     padding: 8px;
@@ -14,21 +14,11 @@
     }
   }
 
-    .logo-big{
-      font-size: 400%;
-      border: 4px solid black;
-      height: 240px;
-      width: 240px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      font-family: 'Permanent Marker', cursive;
-      box-shadow: 10px 10px 10px #bc002d;
-      margin-right: 24px;
-      margin-left: 24px;
-  }
-
   .color-red:hover {
     color: #bc002d
+  }
+
+
+  .police-logo {
+    font-family: 'Indie Flower', cursive;
   }
