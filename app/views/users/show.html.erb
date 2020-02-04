@@ -30,21 +30,29 @@
     <br><hr><br>
     <h2 class="card-title fas fa-key"> Update password </h2>
     <p class="card-text">
-      <%= simple_form_for @user, url: user_path(@user), method: :patch do |f| %>
-        <%= f.input :reset_password_token, as: :hidden %>
-        <%= f.input :password,
-                    label: "New password",
-                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                    input_html: { autocomplete: "new-password" } %>
-        <%= f.input :password_confirmation,
-                    label: "Confirm your new password",
-                    input_html: { autocomplete: "new-password" },
-                    hint: "You will be disconnected if you successfully change your password." %>
-        <%= f.button :submit,
-                     value: 'Update password',
-                     "data-disable-with" => "Creating..",
-                     class: "btn btn-outline-primary" %>
-      <% end %>
+
+<%= simple_form_for @user, url: password_path(@user), method: :put do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :reset_password_token, as: :hidden %>
+  <%= f.full_error :reset_password_token %>
+
+  <div class="form-inputs">
+    <%= f.input :password,
+                label: "New password",
+                required: true,
+                autofocus: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation,
+                label: "Confirm your new password",
+                required: true,
+                input_html: { autocomplete: "new-password" } %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Change my password", class: 'btn btn-outline-primary' %>
+  </div>
+<% end %>
     </p>
   </div>
 </div>
