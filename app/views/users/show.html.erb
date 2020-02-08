@@ -7,7 +7,7 @@
         <%= link_to " Delete account",
             @user,
             method: :delete,
-            data: { confirm: 'Are you sure?', disable_with: 'loading...' },
+            data: { confirm: 'Are you sure?', disable_with: 'deleting...' },
             class: 'nav-link far fa-trash-alt bigger-icon' %>
       </li>
     </ul>
@@ -22,7 +22,7 @@
                     required: true %>
         <%= f.button :submit,
                      value: 'Update name',
-                     "data-disable-with" => "Creating..",
+                     "data-disable-with" => "updating..",
                      class: "btn btn-outline-primary" %>
         <% end %>
       </p>
@@ -48,9 +48,11 @@
                 label: "Confirm your new password",
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Change my password", class: 'btn btn-outline-primary' %>
+
+    <%= f.button :submit,
+                 value: 'Update name',
+                 "data-disable-with" => "updating..",
+                 class: "btn btn-outline-primary" %>
   </div>
 <% end %>
     </p>

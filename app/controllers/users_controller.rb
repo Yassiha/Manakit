@@ -3,6 +3,13 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def update
+    user = current_user
+    user.name = username_params[:name]
+    user.save
+    redirect_to user_path
+  end
+
   def destroy
     @user = current_user
     @user.destroy
