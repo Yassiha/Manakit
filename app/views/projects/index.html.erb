@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item">
+            <%= link_to " Start a new Project", new_project_path,  class: 'nav-link far fa-plus-square bigger-icon' %>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <br>
+      <p class="card-title logo">Easier, Better, Faster, Stronger </p>
+      <p class="card-text">Organize your projects, follow the progress, facilitate cooperation with your teams, adapt to changes and innovate. </p>
+      <p class="card-text">We handle the rest for Y<i class="far fa-heart pink"></i>U </p>
+      <p class="card-text"> <strong>#Intuitive #Collaborative #Effortless</strong></p>
+      <br><hr><br>
+      <p class="card-title"><strong>New Features:</strong> </p>
+      <p class="card-text"> Your tasks are now better organized and it is even easier to identify priorities! <br>
+       You don't have to do anything, we've taken care of everything.</p>
+      <br><hr><br>
+      <p class="card-title"><strong>Next HUGE Feature:</strong> Our dynamic version of Gantt Charts! </p>
+    </div>
+  </div>
+  <br>
+  <% @projects.each do |project|  %>
+    <%= link_to project_path(project) do %>
+      <div class="card-product">
+        <div class="card-product-infos">
+          <h1><span class="fas fa-hands-helping middle-icon"></span> <%= project.title %></h1>
+        </div>
+      </div>
+    <% end %>
+    <br>
+  <% end %>
+
+
+
+</div>
