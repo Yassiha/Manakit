@@ -1,16 +1,5 @@
 <div class="container">
   <div class="card text-center">
-    <div class="card-header">
-      <ul class="nav nav-pills card-header-pills">
-        <li class="nav-item">
-          <% if current_user %>
-            <%= link_to " Start a new Project", new_user_registration_path ,  class: 'nav-link far fa-plus-square bigger-icon' %>
-          <% else %>
-            <%= link_to " Start a new Project", new_user_session_path ,  class: 'nav-link far fa-plus-square bigger-icon' %>
-          <% end %>
-        </li>
-      </ul>
-    </div>
     <div class="card-body">
       <br>
       <p class="card-title logo">Easier, Better, Faster, Stronger </p>

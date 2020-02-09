@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def update
     user = current_user
-    user.name = username_params[:name]
+    user.name = username_params[:name].strip
     user.save
     redirect_to user_path
   end
