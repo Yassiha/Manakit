@@ -6,6 +6,22 @@ class ProjectsController < ApplicationController
     @projects = current_user.projects
   end
 
+  def show
+    @project = Project.find(params[:id])
+    @missions = Project.find(params[:id]).missions
+    progress = 0
+    @missions.each do |mission|
+      progress += mission.status.to_i
+    end
+    divider = @missions.count
+    @progress =
+    if divider > 0
+      progress / divider
+    else
+      0
+    end
+  end
+
   def new
     @project = Project.new
   end
@@ -14,10 +30,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
-  def show
-    @project = Project.find(params[:id])
-    @missions = Project.find(params[:id]).missions
-  end
 
   def create
     project = Project.new(project_params)

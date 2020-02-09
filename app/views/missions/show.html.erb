@@ -1,0 +1,111 @@
+<br>
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item">
+          <%= link_to "", "#", class: 'nav-link far fa-plus-square bigger-icon'  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "","#", method: :get, class: 'nav-link far fa-edit bigger-icon' %>
+        </li>
+        <li class="nav-item">
+           <%= link_to "", "#", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'nav-link far fa-trash-alt bigger-icon' %></p>
+        </li>
+      </ul>
+    </div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <%= @progress %>%"><%= @progress  %>%</div>
+    </div>
+    <div class="card-body">
+      <br>
+      <h2 class="card-title fas fa-tasks"> <%= @mission.title %></h4>
+      <p class="card-text"><%= simple_format(@mission.description) %></p>
+      <br><hr><br>
+      <h2 class="card-title fas fa-users"> Members: </h4>
+      <p class="card-text">
+        <% @mission.users.each do |user| %>
+          <% if user.name != nil && user.name != "" %>
+            <%= user.name %>
+          <% else %>
+            <%= user.email %>
+          <% end %>
+        <% end %>
+      </p>
+      <br><hr><br>
+        <h2 class="card-title fas fa-calendar-alt"> Time: </h4>
+        <p class="card-text">From <strong><%= @mission.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= @mission.due_date.strftime("%d/%m/%Y") %> </strong></p>
+    </div>
+    <br>
+  </div>
+    <br>
+    <% if @mission.tasks.count == 0 %>
+      <%= link_to "#" do %>
+        <div class="card-product">
+          <div class="card-product-infos">
+            <h2>
+              Add your first task <i class="far fa-plus-square middle-icon"></i>
+            </h2>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+    <% @mission.tasks.order(checkbox: :asc, end: :asc, priority: :asc).each do |task| %>
+    <%= link_to area_protocol_task_path(task, task.protocol) do %>
+      <div class="card-product no-link-style">
+        <div class="card-product-infos">
+          <h2>
+            <% if task.checkbox %>
+              <span class="fas fa-thumbtack green"></span> <%= task.title %>
+            <% else %>
+              <span class="fas fa-thumbtack"> </span> <%= task.title %>
+            <% end %>
+          </h2>
+          <% date_color =
+              if task.status.to_i == 100
+                'green low'
+              elsif Date.today >= task.start_date && Date.today < task.end
+                'green high'
+              elsif Date.today >= task.start_date && Date.today == task.end
+                'orange'
+              elsif Date.today >= task.start_date && Date.today > task.end
+                'red high'
+              else
+                'gray low'
+          end %>
+
+          <% priority_color =
+              if task.priority == "High"
+                'high'
+              elsif task.priority == "Moderate"
+                'middle'
+              elsif task.priority == "Low"
+                'low'
+              end %>
+
+          <p>From <strong class="<%= date_color %>"> <%= task.start_date.strftime("%d/%m/%Y") %></strong> to <strong class="<%= date_color %>"><%= task.due_date.strftime("%d/%m/%Y") %></strong> </p>
+          <p>Priority: <span class="<%= priority_color %>"> <%= task.priority %> </span></p>
+          <p>Status: <span> <%= task.status %> </span>
+            <% context_message =
+                if task.status != '100%'
+                  " is working on it"
+                else
+                  " has completed this task"
+                end %>
+            <% if task.users.count > 0 %>
+              <% task.users.each do |user| %>
+                <% if user.name != nil && user.name != "" %>
+                  <%= user.name %>
+                <% else %>
+                  <%= user.email %>
+                <% end %>
+              <% end %>
+            <% end %>
+           </p>
+        </div>
+      </div>
+    <% end %>
+    <br>
+    <% end %>
+  <% end %>
+</div>

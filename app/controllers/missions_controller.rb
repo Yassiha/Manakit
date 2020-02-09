@@ -1,0 +1,67 @@
+class MissionsController < ApplicationController
+  before_action :is_member?
+
+  def show
+    @mission = Mission.find(params[:id])
+    @tasks = @mission.tasks
+    progress = 0
+    @tasks.each do |task|
+      progress += task.status.to_i
+    end
+    divider = @tasks.count
+    @progress =
+    if divider > 0
+     progress / divider
+    else
+      0
+    end
+  end
+
+  def new
+    @mission = Mission.new
+    @project = Project.find(params[:project_id])
+  end
+
+  def create
+    mission = Mission.new(mission_params)
+    mission.project = Project.find(params[:project_id])
+    mission.save
+    MissionMember.create(mission: mission, user: current_user)
+
+    redirect_to project_path(mission.project)
+  end
+
+  def edit
+    @mission = Mission.find(params[:id])
+  end
+
+  def update
+    mission = Mission.find(params[:id])
+    mission.update(mission_params)
+    mission.save
+
+    redirect_to project_mission_path(mission)
+  end
+
+  def destroy
+    mission = Mission.find(params[:id])
+    project = mission.project
+    mission.destroy
+
+    redirect_to project_path(project)
+  end
+
+  private
+
+  def mission_params
+    params.require(:mission).permit(:title, :description, :start_date, :due_date, :priority, :project_id)
+  end
+
+  def is_member?
+    if Project.find(params[:project_id]).users.include?(current_user)
+    else
+      redirect_to root_path
+    end
+  end
+
+end
