@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_02_210054) do
+ActiveRecord::Schema.define(version: 2020_02_09_090725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,10 +40,10 @@ ActiveRecord::Schema.define(version: 2020_02_02_210054) do
     t.date "due_date"
     t.string "title"
     t.text "description"
-    t.string "status"
     t.string "priority"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
     t.index ["project_id"], name: "index_missions_on_project_id"
   end
 
@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(version: 2020_02_02_210054) do
     t.string "manager"
     t.date "delivery_date"
     t.text "description"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
   end
 
   create_table "task_members", force: :cascade do |t|
@@ -81,19 +81,19 @@ ActiveRecord::Schema.define(version: 2020_02_02_210054) do
     t.date "due_date"
     t.string "title"
     t.text "description"
-    t.string "status"
     t.string "priority"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
     t.index ["mission_id"], name: "index_tasks_on_mission_id"
   end
 
   create_table "topics", force: :cascade do |t|
     t.bigint "mission_id"
     t.string "title"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
     t.index ["mission_id"], name: "index_topics_on_mission_id"
   end
 
