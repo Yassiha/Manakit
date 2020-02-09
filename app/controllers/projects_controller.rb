@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-    before_action :is_member?, only: [:edit, :update, :show, :destroy]
+    before_action :is_member?, only: [:show]
     before_action :is_manager?, only: [:edit, :update, :destroy]
 
   def index
