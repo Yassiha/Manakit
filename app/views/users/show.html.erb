@@ -31,9 +31,7 @@
     <h2 class="card-title fas fa-key"> Update password </h2>
     <p class="card-text">
 
-<%= simple_form_for @user, url: password_path(@user), method: :put do |f| %>
-  <%= f.error_notification %>
-
+<%= simple_form_for @user, url: user_path(@user), method: :patch do |f| %>
   <%= f.input :reset_password_token, as: :hidden %>
   <%= f.full_error :reset_password_token %>
 
@@ -42,15 +40,16 @@
                 label: "New password",
                 required: true,
                 autofocus: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                hint: "6 characters minimum.",
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 label: "Confirm your new password",
                 required: true,
+                hint: 'You will have to reconnect',
                 input_html: { autocomplete: "new-password" } %>
 
     <%= f.button :submit,
-                 value: 'Update name',
+                 value: 'Update password',
                  "data-disable-with" => "updating..",
                  class: "btn btn-outline-primary" %>
   </div>
