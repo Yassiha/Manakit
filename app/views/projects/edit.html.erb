@@ -2,13 +2,13 @@
 <div class="container">
   <div class="form">
     <%= simple_form_for @project, url: project_path(@project), method: :patch do |f| %>
-    <h2>Edit your Project</h2>
+    <h2>Update your Project</h2>
     <%= f.input :title, label: "Title:" %>
     <%= f.input :description, label: "Description:", :input_html => { :rows => 7 , :style => 'width: 100%'} %>
     <%= f.input :delivery_date, label: "Delivery:" %>
 
     <button type="button" class="btn btn-outline-primary" style="margin: 8px;">
-      <%= f.button :submit, value: 'Create', "data-disable-with" => "Creating.." %>
+      <%= f.button :submit, value: 'Update', "data-disable-with" => "Creating.." %>
     </button>
   <% end %>
   </div>
