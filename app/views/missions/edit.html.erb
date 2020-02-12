@@ -1,0 +1,19 @@
+<br>
+<div class="container">
+  <div class="form">
+    <%= simple_form_for @mission, url: project_mission_path(@mission), method: :patch do |f| %>
+    <h2>Update your Project</h2>
+    <%= f.input :title, label: "Title:" %>
+    <%= f.input :description, label: "Description:", :input_html => { :rows => 7 , :style => 'width: 100%'} %>
+    <%= f.input :start_date, label: "Start:" %>
+    <%= f.input :due_date, label: "Due date:" %>
+    <%= f.input :priority, label: 'Priority', collection: ['High', 'Moderate', 'Low'], required: true %>
+
+    <button type="button" class="btn btn-outline-primary" style="margin: 8px;">
+      <%= f.button :submit, value: 'Update', "data-disable-with" => "Creating.." %>
+    </button>
+  <% end %>
+  </div>
+
+  <br>
+</div>

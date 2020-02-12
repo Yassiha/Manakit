@@ -1,5 +1,6 @@
 class MissionsController < ApplicationController
-  before_action :is_member?
+  before_action :is_member_mission?, only: [:edit, :update, :show, :destroy]
+  before_action :is_member?, only: [:new, :create]
 
   def show
     @mission = Mission.find(params[:id])
@@ -59,6 +60,13 @@ class MissionsController < ApplicationController
 
   def is_member?
     if Project.find(params[:project_id]).users.include?(current_user)
+    else
+      redirect_to root_path
+    end
+  end
+
+  def is_member_mission?
+    if Mission.find(params[:id]).users.include?(current_user)
     else
       redirect_to root_path
     end
