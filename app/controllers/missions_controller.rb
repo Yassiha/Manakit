@@ -28,6 +28,12 @@ class MissionsController < ApplicationController
     mission.project = Project.find(params[:project_id])
     mission.save
     MissionMember.create(mission: mission, user: current_user)
+    mission.project.users.each do |user|
+      if mission.users.include?(user)
+      else
+        MissionMember.create(mission: mission, user: user)
+      end
+    end
 
     redirect_to project_path(mission.project)
   end

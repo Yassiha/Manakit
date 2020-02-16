@@ -13,9 +13,15 @@
         <% end %>
         <% if current_user.id == @project.manager.to_i %>
           <li class="nav-item">
+            <%= link_to "", new_project_add_project_member_path(@project), class: 'nav-link fas fa-user-plus bigger-icon' %>
+          </li>
+        <% end %>
+        <% if current_user.id == @project.manager.to_i %>
+          <li class="nav-item">
             <%= link_to "", @project, method: :delete, data: { confirm: 'WARNING you will delete an entire Project!', disable_with: 'loading...' }, class: 'nav-link far fa-trash-alt bigger-icon' %>
           </li>
         <% end %>
+
       </ul>
     </div>
     <div class="progress">
@@ -29,11 +35,17 @@
       <h2 class="card-title fas fa-users"> Members: </h4>
       <p class="card-text">
         <% @project.users.each do |user| %>
+          <% if user != current_user && current_user == User.find(@project.manager) %>
+            <%= link_to "", project_add_project_member_path(@project, user),
+                            method: :delete, data: { confirm: 'WARNING you will remove this member from this project!',
+                            disable_with: 'loading...' }, class: 'nav-link fas fa-user-minus middle-icon' %>
+          <% end %>
           <% if user.name != nil && user.name != "" %>
             <%= user.name %>
           <% else %>
             <%= user.email %>
           <% end %>
+          <br>
         <% end %>
       </p>
       <br><hr><br>

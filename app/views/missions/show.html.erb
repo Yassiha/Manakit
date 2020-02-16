@@ -6,12 +6,14 @@
         <li class="nav-item">
           <%= link_to "", "#", class: 'nav-link far fa-plus-square bigger-icon'  %>
         </li>
-        <li class="nav-item">
-          <%= link_to "", edit_project_mission_path(@mission.project, @mission), method: :get, class: 'nav-link far fa-edit bigger-icon' %>
-        </li>
-        <li class="nav-item">
-           <%= link_to "", "#", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'nav-link far fa-trash-alt bigger-icon' %></p>
-        </li>
+        <% if current_user.id == @mission.project.manager.to_i %>
+          <li class="nav-item">
+            <%= link_to "", edit_project_mission_path(@mission.project, @mission), method: :get, class: 'nav-link far fa-edit bigger-icon' %>
+          </li>
+          <li class="nav-item">
+             <%= link_to "", "#", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'nav-link far fa-trash-alt bigger-icon' %></p>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div class="progress">
@@ -30,6 +32,7 @@
           <% else %>
             <%= user.email %>
           <% end %>
+          <br>
         <% end %>
       </p>
       <br><hr><br>
