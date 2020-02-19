@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root to: 'pages#home'
+  root to: 'projects#index'
   resources :projects do
     resources :add_project_member, only: %w[new create destroy]
-    resources :missions, only: %w[show new create edit update destroy]
+    resources :missions, only: %w[show new create edit update destroy] do
+      resources :topics, only: %w[new create edit update destroy]
+    end
   end
   resources :users, only: %w[show update destroy]
 

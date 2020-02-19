@@ -58,7 +58,7 @@ class ProjectsController < ApplicationController
   private
 
   def is_member?
-    if Project.find(params[:id]).users.include?(current_user)
+    if Project.find_by(id: params[:id]) != nil && Project.find_by(id: params[:id]).users.include?(current_user)
     else
       redirect_to root_path
     end
