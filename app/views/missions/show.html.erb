@@ -2,9 +2,9 @@
 <div class="container">
   <div class="card text-center">
     <div class="card-header">
-      <ul class="nav nav-pills card-header-pills">
+      <ul class="nav nav-pills card-header-pills"><i class=""></i>
         <li class="nav-item">
-          <%= link_to "", "#", class: 'nav-link far fa-plus-square bigger-icon'  %>
+          <%= link_to "", new_project_mission_topic_path(@mission.project, @mission), class: 'nav-link fab fa-stack-exchange bigger-icon'  %>
         </li>
         <% if current_user.id == @mission.project.manager.to_i %>
           <li class="nav-item">
@@ -42,6 +42,27 @@
     <br>
   </div>
     <br>
+    <% if @mission.topics.count == 0 %>
+      <%= link_to "#" do %>
+        <div class="card-product">
+          <div class="card-product-infos">
+            <h2>
+              Add your first topic <i class="far fa-plus-square middle-icon"></i>
+            </h2>
+          </div>
+        </div>
+        <br>
+      <% end %>
+    <% else %>
+      <% @mission.topics.each do |topic| %>
+        <div class="card-product">
+          <div class="card-product-infos">
+            <%= topic.title %>
+          </div>
+        </div>
+        <br>
+      <% end %>
+    <% end %>
     <% if @mission.tasks.count == 0 %>
       <%= link_to "#" do %>
         <div class="card-product">

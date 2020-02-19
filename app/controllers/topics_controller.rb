@@ -1,9 +1,17 @@
 class TopicsController < ApplicationController
-
+  before_action :is_member?, only: [:new]
   def new
+    @topic = Topic.new
+    @project = Project.find_by(id: params[:project_id])
+    @mission = Mission.find_by(id: params[:mission_id])
   end
 
   def create
+    topic = Topic.new(topic_params)
+    topic.mission = Mission.find(params[:mission_id])
+    topic.save
+
+    redirect_to root_path
   end
 
   def edit
@@ -18,6 +26,7 @@ class TopicsController < ApplicationController
     private
 
   def topic_params
+    params.require(:topic).permit(:title)
   end
 
   def is_member?
@@ -28,5 +37,9 @@ class TopicsController < ApplicationController
   end
 
   def is_manager?
+    if Project.find_by(id: params[:project_id]) != nil && Project.find_by(id: params[:project_id]).manager == current_user.id.to_s
+    else
+      redirect_to root_path
+    end
   end
 end

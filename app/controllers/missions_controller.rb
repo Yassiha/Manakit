@@ -1,8 +1,6 @@
 class MissionsController < ApplicationController
-  before_action :is_member?, only: [:show]
+  before_action :is_member?, only: [:show, :new, :create]
   before_action :is_manager?, only: [:edit, :update, :destroy]
-  before_action :is_member_new?, only: [:new, :create]
-
 
   def show
     @mission = Mission.find(params[:id])
@@ -67,13 +65,6 @@ class MissionsController < ApplicationController
   end
 
   def is_member?
-    if Mission.find_by(id: params[:id]) != nil && Mission.find_by(id: params[:id]).users.include?(current_user)
-    else
-      redirect_to root_path
-    end
-  end
-
-  def is_member_new?
     if Project.find_by(id: params[:project_id]) != nil && Project.find_by(id: params[:project_id]).users.include?(current_user)
     else
       redirect_to root_path

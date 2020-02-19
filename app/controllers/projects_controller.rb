@@ -65,7 +65,7 @@ class ProjectsController < ApplicationController
   end
 
   def is_manager?
-    if Project.find(params[:id]).manager == current_user.id.to_s
+    if Project.find_by(id: params[:id]) != nil && Project.find_by(id: params[:id]).manager == current_user.id.to_s
     else
       redirect_to root_path
     end
