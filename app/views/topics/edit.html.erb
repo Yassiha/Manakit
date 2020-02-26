@@ -1,0 +1,43 @@
+<br>
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills"><i class=""></i>
+        <% if current_user == @topic.mission.project.manager%>
+          <li class="nav-item">
+            <%= link_to "", "#", method: :get, class: 'nav-link far fa-edit bigger-icon' %>
+          </li>
+          <li class="nav-item">
+             <%= link_to "", project_mission_topic_path(@topic.mission.project, @topic.mission, @topic), method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'nav-link far fa-trash-alt bigger-icon' %></p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="card-body">
+      <br>
+      <h2 class="card-title fas fa-tasks"> <%= @topic.title %></h2>
+      <br><hr><br>
+    </div>
+    <br>
+    <% if @topic.messages.count == 0 %>
+      <%= link_to "#" do %>
+        <div class="card-product">
+          <div class="card-product-infos">
+            <h2>
+              Add your first message <i class="far fa-plus-square middle-icon"></i>
+            </h2>
+          </div>
+        </div>
+        <br>
+      <% end %>
+    <% else %>
+      <% @topic.messages each do |message| %>
+        <div class="card-product">
+          <div class="card-product-infos">
+            <%= topic.message %>
+          </div>
+        </div>
+        <br>
+      <% end %>
+    <% end %>
+</div>

@@ -15,12 +15,17 @@ class TopicsController < ApplicationController
   end
 
   def edit
+    @topic = Topic.find_by(id: params[:id])
   end
 
   def update
   end
 
   def destroy
+    topic = Topic.find_by(id: params[:id])
+    topic.destroy
+
+    redirect_to root_path
   end
 
     private
