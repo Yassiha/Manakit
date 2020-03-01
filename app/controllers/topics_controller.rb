@@ -16,6 +16,7 @@ class TopicsController < ApplicationController
 
   def edit
     @topic = Topic.find_by(id: params[:id])
+    @message = Message.new
   end
 
   def update

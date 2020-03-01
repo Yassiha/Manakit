@@ -15,29 +15,32 @@
     </div>
     <div class="card-body">
       <br>
-      <h2 class="card-title fas fa-tasks"> <%= @topic.title %></h2>
+      <h2 class="card-title fab fa-stack-exchange"> <%= @topic.title %></h2>
       <br><hr><br>
+      <h2 class="card-title fas fa-comment-alt"> New message </h2>
+        <%= simple_form_for @message, url: project_mission_topic_messages_path(@topic.mission.project, @topic.mission, @topic), method: :post do |f| %>
+            <%= f.input :content  ,label: "Collaborate and make it happend!"  %>
+          <%= f.button :submit, value: 'Publish', "data-disable-with" => "Creating..", class: "btn btn-outline-primary" %>
+        <% end %>
+
+    </div>
+  </div>
+  <br>
+    <br>
+  <% @topic.messages.order(created_at: :desc).each do |message| %>
+    <div class="card">
+      <div class="card-content">
+        <%= "#{message.user.name} | #{message.user.email}" %>
+        <%= message.created_at %>
+        <% if message.user == current_user %>
+         | <%= link_to "", "#", method: :get, class: 'far fa-edit' %> |
+          <%= link_to "", "#", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'far fa-trash-alt' %>
+        <% end %>
+        <br><hr>
+        <%= simple_format(message.content) %>
+      </div>
     </div>
     <br>
-    <% if @topic.messages.count == 0 %>
-      <%= link_to "#" do %>
-        <div class="card-product">
-          <div class="card-product-infos">
-            <h2>
-              Add your first message <i class="far fa-plus-square middle-icon"></i>
-            </h2>
-          </div>
-        </div>
-        <br>
-      <% end %>
-    <% else %>
-      <% @topic.messages each do |message| %>
-        <div class="card-product">
-          <div class="card-product-infos">
-            <%= topic.message %>
-          </div>
-        </div>
-        <br>
-      <% end %>
-    <% end %>
+  <% end %>
+  </div>
 </div>
