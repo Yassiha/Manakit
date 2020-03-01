@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
   def create
     project = Project.new(project_params)
     project.status = 0
-    project.manager = current_user.id
+    project.manager = current_user
     project.save
     ProjectMember.create(user: current_user, project: project)
 
@@ -58,14 +58,11 @@ class ProjectsController < ApplicationController
   private
 
   def is_member?
-    if Project.find(params[:id]).users.include?(current_user)
-    else
-      redirect_to root_path
-    end
+      redirect_to root_path if current_user.projects.find_by(id: params[:id]).nil?
   end
 
   def is_manager?
-    if Project.find(params[:id]).manager == current_user.id.to_s
+    if Project.find_by(id: params[:id]) != nil && Project.find_by(id: params[:id]).manager == current_user
     else
       redirect_to root_path
     end
