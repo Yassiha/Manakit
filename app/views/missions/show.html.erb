@@ -55,7 +55,7 @@
       <% end %>
     <% else %>
       <% @mission.topics.each do |topic| %>
-        <%= link_to edit_project_mission_topic_path(topic.mission.project, topic.mission, topic) do %>
+        <%= link_to project_mission_topic_path(topic.mission.project, topic.mission, topic) do %>
           <div class="card-product">
             <div class="card-product-infos">
               <%= topic.title %>

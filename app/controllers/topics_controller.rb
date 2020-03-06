@@ -11,15 +11,30 @@ class TopicsController < ApplicationController
     topic.mission = Mission.find(params[:mission_id])
     topic.save
 
-    redirect_to root_path
+    redirect_to project_mission_path(topic.mission.project, topic.mission)
   end
 
-  def edit
+  def show
     @topic = Topic.find_by(id: params[:id])
     @message = Message.new
   end
 
+  def edit
+    @topic = Topic.find_by(id: params[:id])
+  end
+
   def update
+    topic = Topic.find_by(id: params[:id])
+    topic.title = topic_params[:title]
+    if topic_params[:status] == 'Close'
+      topic.status = 1
+    elsif topic_params[:status] == 'Open'
+      topic.status = 2
+    end
+    topic.save
+
+    redirect_to project_mission_topic_path(topic.mission.project, topic.mission)
+
   end
 
   def destroy
@@ -32,7 +47,7 @@ class TopicsController < ApplicationController
     private
 
   def topic_params
-    params.require(:topic).permit(:title)
+    params.require(:topic).permit(:title, :status)
   end
 
   def is_member?

@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
       message.user = current_user
       message.topic = Topic.find(params[:topic_id])
       message.save
-      redirect_to edit_project_mission_topic_path(message.topic.mission.project, message.topic.mission, message.topic)
+      redirect_to project_mission_topic_path(message.topic.mission.project, message.topic.mission, message.topic)
     end
 
     def destroy

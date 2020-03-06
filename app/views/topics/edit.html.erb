@@ -1,46 +1,16 @@
 <br>
 <div class="container">
-  <div class="card text-center">
-    <div class="card-header">
-      <ul class="nav nav-pills card-header-pills"><i class=""></i>
-        <% if current_user == @topic.mission.project.manager%>
-          <li class="nav-item">
-            <%= link_to "", "#", method: :get, class: 'nav-link far fa-edit bigger-icon' %>
-          </li>
-          <li class="nav-item">
-             <%= link_to "", project_mission_topic_path(@topic.mission.project, @topic.mission, @topic), method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'nav-link far fa-trash-alt bigger-icon' %></p>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="card-body">
-      <br>
-      <h2 class="card-title fab fa-stack-exchange"> <%= @topic.title %></h2>
-      <br><hr><br>
-      <h2 class="card-title fas fa-comment-alt"> New message </h2>
-        <%= simple_form_for @message, url: project_mission_topic_messages_path(@topic.mission.project, @topic.mission, @topic), method: :post do |f| %>
-            <%= f.input :content  ,label: "Collaborate and make it happend!"  %>
-          <%= f.button :submit, value: 'Publish', "data-disable-with" => "Creating..", class: "btn btn-outline-primary" %>
-        <% end %>
+  <div class="form">
+    <%= simple_form_for @topic, url: project_mission_topic_path(@topic.mission.project, @topic.mission, @topic), method: :patch do |f| %>
+    <h2>Update your Mission</h2>
+    <%= f.input :title, label: "Title:" %>
+    <%= f.input :status, label: 'Priority', collection: ['Open', 'Close'], required: true %>
 
-    </div>
-  </div>
-  <br>
-    <br>
-  <% @topic.messages.order(created_at: :desc).each do |message| %>
-    <div class="card">
-      <div class="card-content">
-        <%= "#{message.user.name} | #{message.user.email}" %>
-        <%= message.created_at %>
-        <% if message.user == current_user %>
-         | <%= link_to "", "#", method: :get, class: 'far fa-edit' %> |
-          <%= link_to "", "#", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'far fa-trash-alt' %>
-        <% end %>
-        <br><hr>
-        <%= simple_format(message.content) %>
-      </div>
-    </div>
-    <br>
+    <button type="button" class="btn btn-outline-primary" style="margin: 8px;">
+      <%= f.button :submit, value: 'Update', "data-disable-with" => "Creating.." %>
+    </button>
   <% end %>
   </div>
+
+  <br>
 </div>
