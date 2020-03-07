@@ -4,7 +4,7 @@
     <div class="card-header">
       <ul class="nav nav-pills card-header-pills"><i class=""></i>
         <li class="nav-item">
-          <%= link_to "", new_project_mission_topic_path(@mission.project, @mission), class: 'nav-link fab fa-stack-exchange bigger-icon'  %>
+          <%= link_to "+", new_project_mission_topic_path(@mission.project, @mission), class: 'nav-link far fa-comments bigger-icon'  %>
         </li>
         <% if current_user == @mission.project.manager%>
           <li class="nav-item">
@@ -58,7 +58,15 @@
         <%= link_to project_mission_topic_path(topic.mission.project, topic.mission, topic) do %>
           <div class="card-product">
             <div class="card-product-infos">
-              <%= topic.title %>
+              <h2><span class="far fa-comments"></span> <%= topic.title %> </h2>
+              <% if topic.messages.count > 0 && (topic.status == 2 || topic.status == nil) %>
+                <p><%= "#{topic.messages.last.user.name} | #{topic.messages.last.updated_at}"  %></p>
+                <p><%= topic.messages.last.content.truncate(460)%></p>
+              <% elsif topic.messages.count == 0  %>
+                <p>Collaboration is the key. Engage the conversation and let the magic happen !</p>
+              <% else %>
+                <i class="fas fa-lock"> Locked</i>
+              <% end %>
             </div>
         </div>
         <% end %>

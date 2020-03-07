@@ -15,10 +15,10 @@
     </div>
     <div class="card-body">
       <br>
-      <h2 class="card-title fab fa-stack-exchange"> <%= @topic.title %></h2>
+      <h2 class="card-title far fa-comments"> <%= @topic.title %></h2>
       <br><hr><br>
       <% if @topic.status == 2 || @topic.status == nil %>
-        <h2 class="card-title fas fa-comment-alt"> New message </h2>
+        <h2 class="card-title far fa-comment"> New message </h2>
         <%= simple_form_for @message, url: project_mission_topic_messages_path(@topic.mission.project, @topic.mission, @topic), method: :post do |f| %>
             <%= f.input :content  ,label: "Collaborate and make it happend!"  %>
           <%= f.button :submit, value: 'Publish', "data-disable-with" => "Creating..", class: "btn btn-outline-primary" %>
@@ -35,7 +35,7 @@
     <div class="card">
       <div class="card-content">
         <%= "#{message.user.name} | #{message.user.email}" %>
-        <%= message.created_at %>
+        <%= message.updated_at %>
         <% if message.user == current_user %>
          | <%= link_to "", "#", method: :get, class: 'far fa-edit' %> |
           <%= link_to "", "#", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'far fa-trash-alt' %>
