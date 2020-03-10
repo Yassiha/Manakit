@@ -5,17 +5,16 @@ class MissionsController < ApplicationController
   def show
     @mission = Mission.find(params[:id])
     @tasks = @mission.tasks
-    progress = 0
-    @tasks.each do |task|
-      progress += task.status.to_i
+
+    @usernames = []
+    @mission.users.each do |user|
+      if user.name != nil && user.name != ""
+        @usernames << user.name
+      else
+        @usernames << user.email
+      end
     end
-    divider = @tasks.count
-    @progress =
-    if divider > 0
-     progress / divider
-    else
-      0
-    end
+    @progress = 0
   end
 
   def new

@@ -13,7 +13,6 @@ class MessagesController < ApplicationController
     def destroy
     end
 
-
     private
 
     def params_messages

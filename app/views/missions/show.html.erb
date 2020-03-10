@@ -25,16 +25,11 @@
       <p class="card-text"><%= simple_format(@mission.description) %></p>
       <br><hr><br>
       <h2 class="card-title fas fa-users"> Members: </h4>
-      <p class="card-text">
-        <% @mission.users.each do |user| %>
-          <% if user.name != nil && user.name != "" %>
-            <%= user.name %>
-          <% else %>
-            <%= user.email %>
-          <% end %>
-          <br>
+        <% @usernames.each do |username| %>
+          <p class="card-text">
+            <%= username %>
+          </p>
         <% end %>
-      </p>
       <br><hr><br>
         <h2 class="card-title fas fa-calendar-alt"> Time: </h4>
         <p class="card-text">From <strong><%= @mission.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= @mission.due_date.strftime("%d/%m/%Y") %> </strong></p>
