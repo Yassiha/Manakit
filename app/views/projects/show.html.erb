@@ -4,18 +4,17 @@
     <div class="card-header">
       <ul class="nav nav-pills card-header-pills">
         <li class="nav-item">
-          <%= link_to "", new_project_mission_path(@project), class: 'nav-link far fa-plus-square bigger-icon' %>
+          <%= link_to "+", new_project_mission_path(@project), class: 'nav-link fas fa-tasks bigger-icon' %>
         </li>
         <% if current_user == @project.manager %>
           <li class="nav-item">
-            <%= link_to "", edit_project_path(@project), method: :get, class: 'nav-link far fa-edit bigger-icon' %>
+            <%= link_to "+", new_project_add_project_member_path(@project), class: 'nav-link fas fa-user bigger-icon' %>
           </li>
         <% end %>
         <% if current_user == @project.manager %>
           <li class="nav-item">
-            <%= link_to "", new_project_add_project_member_path(@project), class: 'nav-link fas fa-user-plus bigger-icon' %>
+            <%= link_to "", edit_project_path(@project), method: :get, class: 'nav-link far fa-edit bigger-icon' %>
           </li>
-
         <% end %>
         <% if current_user == @project.manager %>
           <li class="nav-item">
@@ -37,9 +36,9 @@
       <p class="card-text">
         <% @project.users.each do |user| %>
           <% if user != current_user && current_user == @project.manager %>
-            <%= link_to "", project_add_project_member_path(@project, user),
+            <%= link_to "-", project_add_project_member_path(@project, user),
                             method: :delete, data: { confirm: 'WARNING you will remove this member from this project!',
-                            disable_with: 'loading...' }, class: 'nav-link fas fa-user-minus middle-icon' %>
+                            disable_with: 'loading...' }, class: 'nav-link fas fa-user middle-icon' %>
           <% end %>
           <% if user.name != nil && user.name != "" %>
             <%= user.name %>

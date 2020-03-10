@@ -34,8 +34,8 @@
   <% @topic.messages.order(created_at: :desc).each do |message| %>
     <div class="card">
       <div class="card-content">
-        <%= "#{message.user.name} | #{message.user.email}" %>
-        <%= message.updated_at %>
+        <%= "#{message.user.name} | #{message.user.email} | "  %>
+        <%= message.updated_at.strftime("%d/%m/%Y") %>
         <% if message.user == current_user %>
          | <%= link_to "", "#", method: :get, class: 'far fa-edit' %> |
           <%= link_to "", "#", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'far fa-trash-alt' %>

@@ -1,5 +1,7 @@
 class TopicsController < ApplicationController
-  before_action :is_member?, only: [:new]
+  before_action :is_member?
+  before_action :is_manager?, only: [:new, :create, :edit, :update, :destroy]
+
   def new
     @topic = Topic.new
     @project = Project.find_by(id: params[:project_id])
