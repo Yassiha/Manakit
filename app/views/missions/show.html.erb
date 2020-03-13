@@ -42,7 +42,7 @@
         <div class="card-product">
           <div class="card-product-infos">
             <h2>
-              Add your first topic <i class="far fa-plus-square middle-icon"></i>
+              <i class="far fa-comments bigger-icon high"> Add your first topic</i>
             </h2>
           </div>
         </div>
@@ -73,7 +73,7 @@
         <div class="card-product">
           <div class="card-product-infos">
             <h2>
-              Add your first task <i class="far fa-plus-square middle-icon"></i>
+              <i class="fas fa-tasks bigger-icon high"> Add your first task</i>
             </h2>
           </div>
         </div>
@@ -83,54 +83,9 @@
     <%= link_to area_protocol_task_path(task, task.protocol) do %>
       <div class="card-product no-link-style">
         <div class="card-product-infos">
-          <h2>
-            <% if task.checkbox %>
-              <span class="fas fa-thumbtack green"></span> <%= task.title %>
-            <% else %>
-              <span class="fas fa-thumbtack"> </span> <%= task.title %>
-            <% end %>
-          </h2>
-          <% date_color =
-              if task.status.to_i == 100
-                'green low'
-              elsif Date.today >= task.start_date && Date.today < task.end
-                'green high'
-              elsif Date.today >= task.start_date && Date.today == task.end
-                'orange'
-              elsif Date.today >= task.start_date && Date.today > task.end
-                'red high'
-              else
-                'gray low'
-          end %>
-
-          <% priority_color =
-              if task.priority == "High"
-                'high'
-              elsif task.priority == "Moderate"
-                'middle'
-              elsif task.priority == "Low"
-                'low'
-              end %>
-
           <p>From <strong class="<%= date_color %>"> <%= task.start_date.strftime("%d/%m/%Y") %></strong> to <strong class="<%= date_color %>"><%= task.due_date.strftime("%d/%m/%Y") %></strong> </p>
           <p>Priority: <span class="<%= priority_color %>"> <%= task.priority %> </span></p>
-          <p>Status: <span> <%= task.status %> </span>
-            <% context_message =
-                if task.status != '100%'
-                  " is working on it"
-                else
-                  " has completed this task"
-                end %>
-            <% if task.users.count > 0 %>
-              <% task.users.each do |user| %>
-                <% if user.name != nil && user.name != "" %>
-                  <%= user.name %>
-                <% else %>
-                  <%= user.email %>
-                <% end %>
-              <% end %>
-            <% end %>
-           </p>
+          <p>Status: </p>
         </div>
       </div>
     <% end %>

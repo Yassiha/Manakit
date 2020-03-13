@@ -41,9 +41,11 @@ class TopicsController < ApplicationController
 
   def destroy
     topic = Topic.find_by(id: params[:id])
+    project = topic.mission.project
+    mission = topic.mission
     topic.destroy
 
-    redirect_to root_path
+    redirect_to project_mission_path(project, mission)
   end
 
     private
@@ -60,7 +62,7 @@ class TopicsController < ApplicationController
   end
 
   def is_manager?
-    if Project.find_by(id: params[:project_id]) != nil && Project.find_by(id: params[:project_id]).manager == current_user.id.to_s
+    if Project.find_by(id: params[:project_id]) != nil && Project.find_by(id: params[:project_id]).manager == current_user
     else
       redirect_to root_path
     end
