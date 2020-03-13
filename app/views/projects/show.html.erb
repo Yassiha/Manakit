@@ -35,15 +35,15 @@
       <h2 class="card-title fas fa-users"> Members: </h4>
       <p class="card-text">
         <% @project.users.each do |user| %>
-          <% if user != current_user && current_user == @project.manager %>
-            <%= link_to "-", project_add_project_member_path(@project, user),
-                            method: :delete, data: { confirm: 'WARNING you will remove this member from this project!',
-                            disable_with: 'loading...' }, class: 'nav-link fas fa-user middle-icon' %>
-          <% end %>
           <% if user.name != nil && user.name != "" %>
             <%= user.name %>
           <% else %>
             <%= user.email %>
+          <% end %>
+          <% if user != current_user && current_user == @project.manager %>
+            <%= link_to "-", project_add_project_member_path(@project, user),
+                            method: :delete, data: { confirm: 'WARNING you will remove this member from this project!',
+                            disable_with: 'loading...' }, class: 'nav-link fas fa-user middle-icon' %>
           <% end %>
           <br>
         <% end %>
