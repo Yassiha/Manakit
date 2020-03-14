@@ -71,15 +71,6 @@
         <div class="card-product">
           <div class="card-product-infos">
             <h2><span class="fas fa-tasks"></span> <%= mission.title %> </h2>
-            <p>
-             <% mission.tasks.each do |task| %>
-                <% if task.checkbox %>
-                  <i class="fas fa-thumbtack green"></i>
-                <% else %>
-                  <i class="fas fa-thumbtack gray"></i>
-                <% end %>
-              <% end %>
-            </p>
             <p class="card-text far fa-calendar-alt"> From <strong><%= mission.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= mission.due_date.strftime("%d/%m/%Y") %> </strong></p>
           </div>
         </div>

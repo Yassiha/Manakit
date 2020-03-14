@@ -69,7 +69,7 @@
       <% end %>
     <% end %>
     <% if @mission.tasks.count == 0 %>
-      <%= link_to "#" do %>
+      <%= link_to new_project_mission_task_path(params[:project_id], params[:id]) do %>
         <div class="card-product">
           <div class="card-product-infos">
             <h2>
@@ -79,12 +79,12 @@
         </div>
       <% end %>
     <% else %>
-    <% @mission.tasks.order(checkbox: :asc, end: :asc, priority: :asc).each do |task| %>
-    <%= link_to area_protocol_task_path(task, task.protocol) do %>
+    <% @mission.tasks.order(due_date: :asc, priority: :asc).each do |task| %>
+    <%= link_to project_mission_task_path(task, @mission) do %>
       <div class="card-product no-link-style">
         <div class="card-product-infos">
-          <p>From <strong class="<%= date_color %>"> <%= task.start_date.strftime("%d/%m/%Y") %></strong> to <strong class="<%= date_color %>"><%= task.due_date.strftime("%d/%m/%Y") %></strong> </p>
-          <p>Priority: <span class="<%= priority_color %>"> <%= task.priority %> </span></p>
+          <p>From <strong> <%= task.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= task.due_date.strftime("%d/%m/%Y") %></strong> </p>
+          <p>Priority: <span> <%= task.priority %> </span></p>
           <p>Status: </p>
         </div>
       </div>
