@@ -13,14 +13,31 @@ class TasksController < ApplicationController
   def create
     task = Task.new(task_params)
     task.mission = Mission.find(params[:mission_id])
+    task.status = 0
     task.save
-    redirect_to root_path
+    redirect_to project_mission_path(params[:project_id], params[:mission_id])
+  end
+
+  def update
+    task = Task.find(params[:id])
+    task.status = task_params[:status].to_i
+    if task_params[:finish] == "1"
+      task.finish = true
+    else
+      task.finish = false
+    end
+    task.finish = true if task.status == 100
+    task.status = 100 if task.finish == true
+    task.finish = false if task.status < 100
+
+    task.save
+    redirect_to project_mission_task_path(task.mission.project, task.mission, task)
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:start_date, :due_date, :title, :description, :priority, :status, :mission_id)
+    params.require(:task).permit(:start_date, :due_date, :title, :description, :priority, :status, :finish, :mission_id)
   end
 
   def is_member?

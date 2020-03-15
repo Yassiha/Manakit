@@ -4,6 +4,9 @@
     <div class="card-header">
       <ul class="nav nav-pills card-header-pills"><i class=""></i>
         <li class="nav-item">
+          <%= link_to "+", new_project_mission_task_path(@mission.project, @mission), class: 'nav-link fas fa-thumbtack bigger-icon'  %>
+        </li>
+        <li class="nav-item">
           <%= link_to "+", new_project_mission_topic_path(@mission.project, @mission), class: 'nav-link far fa-comments bigger-icon'  %>
         </li>
         <% if current_user == @mission.project.manager%>
@@ -80,7 +83,7 @@
       <% end %>
     <% else %>
     <% @mission.tasks.order(due_date: :asc, priority: :asc).each do |task| %>
-    <%= link_to project_mission_task_path(task, @mission) do %>
+    <%= link_to project_mission_task_path(params[:project_id], @mission) do %>
       <div class="card-product no-link-style">
         <div class="card-product-infos">
           <p>From <strong> <%= task.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= task.due_date.strftime("%d/%m/%Y") %></strong> </p>
