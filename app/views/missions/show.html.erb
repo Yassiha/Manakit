@@ -27,15 +27,11 @@
       <h2 class="card-title fas fa-tasks"> <%= @mission.title %></h4>
       <p class="card-text"><%= simple_format(@mission.description) %></p>
       <br><hr><br>
-      <h2 class="card-title fas fa-users"> Members: </h4>
-        <% @usernames.each do |username| %>
-          <p class="card-text">
-            <%= username %>
-          </p>
-        <% end %>
+      <h4 class="card-title fas fa-star"> Priority: </h4>
+      <p class="card-text"><%= @mission.priority %></p>
       <br><hr><br>
-        <h2 class="card-title fas fa-calendar-alt"> Time: </h4>
-        <p class="card-text">From <strong><%= @mission.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= @mission.due_date.strftime("%d/%m/%Y") %> </strong></p>
+      <h2 class="card-title fas fa-calendar-alt"> Time: </h4>
+      <p class="card-text">From <strong><%= @mission.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= @mission.due_date.strftime("%d/%m/%Y") %> </strong></p>
     </div>
     <br>
   </div>
@@ -86,9 +82,10 @@
     <%= link_to project_mission_task_path(params[:project_id], @mission, task) do %>
       <div class="card-product no-link-style">
         <div class="card-product-infos">
-          <p>From <strong> <%= task.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= task.due_date.strftime("%d/%m/%Y") %></strong> </p>
-          <p>Priority: <span> <%= task.priority %> </span></p>
-          <p>Status: <%= "#{task.status.to_s}%" %> </p>
+          <h2><span class="fas fa-thumbtack"></span> <%= task.title %></h2>
+          <p class="far fa-calendar-alt"> <strong> <%= task.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= task.due_date.strftime("%d/%m/%Y") %></strong> </p>
+          <p><span class="fas fa-star"> <%= task.priority %> </span></p>
+          <p><span class="card-title fas fa-spinner"> <%= "#{task.status.to_s}%" %></span></p>
         </div>
       </div>
     <% end %>

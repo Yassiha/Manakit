@@ -70,8 +70,10 @@
       <%= link_to project_mission_path(mission.project, mission) do %>
         <div class="card-product">
           <div class="card-product-infos">
-            <h2><span class="fas fa-tasks"></span> <%= mission.title %> </h2>
-            <p class="card-text far fa-calendar-alt"> From <strong><%= mission.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= mission.due_date.strftime("%d/%m/%Y") %> </strong></p>
+            <h2><span class="fas fa-tasks"> <%= mission.title %></span></h2>
+            <p><span class="far fa-calendar-alt"> <strong><%= mission.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= mission.due_date.strftime("%d/%m/%Y") %> </strong></span></p>
+            <p><span class="fas fa-star"> <%= mission.priority %></span></p>
+            <p><span class=" fas fa-spinner"> <%= "#{mission.status.to_s}%" %></span></p>
           </div>
         </div>
       <% end %>
