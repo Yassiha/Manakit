@@ -1,7 +1,13 @@
 <br>
 <div class="container">
   <div class="card text-center">
-    <div class="card-header">
+    <div class="card-body">
+      <br>
+      <h2 class="card-title fas fa-tasks"> <%= @mission.title %></h4>
+      <p class="card-text"><%= simple_format(@mission.description) %></p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <%= @status %>"><%= @status %></div>
+    </div>
       <ul class="nav nav-pills card-header-pills"><i class=""></i>
         <li class="nav-item">
           <%= link_to "+", new_project_mission_task_path(@mission.project, @mission), class: 'nav-link fas fa-thumbtack bigger-icon'  %>
@@ -18,14 +24,6 @@
           </li>
         <% end %>
       </ul>
-    </div>
-    <div class="progress">
-      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <%= @status %>"><%= @status %></div>
-    </div>
-    <div class="card-body">
-      <br>
-      <h2 class="card-title fas fa-tasks"> <%= @mission.title %></h4>
-      <p class="card-text"><%= simple_format(@mission.description) %></p>
       <br><hr><br>
       <h4 class="card-title fas fa-star"> Priority: </h4>
       <p class="card-text"><%= @mission.priority %></p>
