@@ -4,6 +4,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find_by(id: params[:id])
+    @status = "#{@task.status.to_s}%"
   end
 
   def new
