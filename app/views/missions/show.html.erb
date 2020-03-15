@@ -83,7 +83,7 @@
       <% end %>
     <% else %>
     <% @mission.tasks.order(due_date: :asc, priority: :asc).each do |task| %>
-    <%= link_to project_mission_task_path(params[:project_id], @mission) do %>
+    <%= link_to project_mission_task_path(params[:project_id], @mission, task) do %>
       <div class="card-product no-link-style">
         <div class="card-product-infos">
           <p>From <strong> <%= task.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= task.due_date.strftime("%d/%m/%Y") %></strong> </p>
