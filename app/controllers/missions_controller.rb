@@ -14,7 +14,7 @@ class MissionsController < ApplicationController
         @usernames << user.email
       end
     end
-    @progress = 0
+    @status = "#{@mission.status.to_s}%"
   end
 
   def new

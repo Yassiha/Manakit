@@ -16,6 +16,7 @@ class TasksController < ApplicationController
     task.mission = Mission.find(params[:mission_id])
     task.status = 0
     task.save
+    update_status(task.mission)
     redirect_to project_mission_path(params[:project_id], params[:mission_id])
   end
 
@@ -32,10 +33,36 @@ class TasksController < ApplicationController
     task.finish = false if task.status < 100
 
     task.save
+    update_status(task.mission)
     redirect_to project_mission_task_path(task.mission.project, task.mission, task)
   end
 
+  def destroy
+    task = Task.find(params[:id])
+    mission = task.mission
+    task.destroy
+    redirect_to project_mission_path(mission.project, mission)
+  end
+
   private
+
+  def update_status(mission)
+    tasks = mission.tasks
+    total = 0
+    tasks.each do |task|
+      total += task.status.nil? ? 0 : task.status
+    end
+    mission.status = total / (tasks.count > 0 ? tasks.count : 1)
+    mission.save
+    project = mission.project
+    missions = project.missions
+    total = 0
+    missions.each do |mission|
+      total += mission.status.nil? ? 0 : mission.status
+    end
+    project.status = total / (missions.count > 0 ? missions.count : 1)
+    project.save
+  end
 
   def task_params
     params.require(:task).permit(:start_date, :due_date, :title, :description, :priority, :status, :finish, :mission_id)

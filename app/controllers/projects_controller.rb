@@ -9,17 +9,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @missions = Project.find(params[:id]).missions
-    progress = 0
-    @missions.each do |mission|
-      progress += mission.status.to_i
-    end
-    divider = @missions.count
-    @progress =
-    if divider > 0
-      progress / divider
-    else
-      0
-    end
+    @status = "#{@project.status.to_s}%"
   end
 
   def new
