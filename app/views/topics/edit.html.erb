@@ -2,7 +2,7 @@
 <div class="container">
   <div class="form">
     <%= simple_form_for @topic, url: project_mission_topic_path(@topic.mission.project, @topic.mission, @topic), method: :patch do |f| %>
-    <h2>Update your Mission</h2>
+    <h2>Update your topic</h2>
     <%= f.input :title, label: "Title:" %>
     <%= f.input :status, label: 'Priority', collection: ['Open', 'Close'], required: true %>
 
