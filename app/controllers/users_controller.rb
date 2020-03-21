@@ -1,21 +1,17 @@
 class UsersController < ApplicationController
+    before_action :authenticate_user!
   def show
-    @user = current_user
+    @user ||= current_user
   end
 
   def update
-    @error = ''
     user = current_user
     user.name = username_params[:name].strip if username_params[:name].nil? == false
-    if password_params[:password].nil? == false
-      if password_params[:password].length >= 6
-        if password_params[:password] == password_params[:password_confirmation]
-          user.password = password_params[:password]
-        end
-      end
+    if user.update(password_params)
+      redirect_to user_path(current_user)
+    else
+      render action: "show"
     end
-    user.save
-    redirect_to user_path
   end
 
   def destroy
@@ -31,6 +27,6 @@ class UsersController < ApplicationController
   end
 
   def password_params
-    params.require(:user).permit(:password, :password_confirmation)
+    params.require(:user).permit(:password, :password_confirmation, :reset_password_token)
   end
 end
