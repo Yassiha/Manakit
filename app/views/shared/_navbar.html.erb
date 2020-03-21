@@ -1,32 +1,29 @@
-<div class="navbar navbar-expand-sm navbar-light sticky-top d-flex justify-content-end">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<div class="navbar navbar-expand-sm navbar-light sticky-top ">
+  <span class="d-flex justify-content-start"> <%= render 'shared/back' %> </span>
+  <button class="navbar-toggler d-flex justify-content-end" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
-<div class="d-flex justify-content-start">
-  <%= render 'shared/back' %>
-</div>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item">
+        <li class="nav-item d-flex justify-content-end">
           <%= link_to "Home", projects_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-flex justify-content-end">
           <%= link_to "My account", user_path(current_user), class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-flex justify-content-end">
           <%= link_to "Dashboard", "#", class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-flex justify-content-end">
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
       <% else %>
-        <li class="nav-item">
+        <li class="nav-item d-flex justify-content-end">
           <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-flex justify-content-end">
           <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
         </li>
       <% end %>
