@@ -82,7 +82,7 @@
         <div class="card-product-infos">
           <h2><span class="fas fa-thumbtack <%= status_color(task) %>"></span> <%= task.title %></h2>
           <p class="far fa-calendar-alt"> <strong> <%= task.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= task.due_date.strftime("%d/%m/%Y") %></strong> </p>
-          <p><span class="fas fa-star"> <%= task.priority %> </span></p>
+          <p><span class="fas fa-star <%= priority_color(task) %>"> <%= task.priority %> </span></p>
           <p class="card-title">
             <span class="fas fa-spinner <%= status_color(task) %>"><%= "#{task.status.to_s}%" %></span>
           </p>

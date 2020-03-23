@@ -20,8 +20,8 @@
     <h4 class="card-title fas fa-star"> Priority: </h4>
     <p class="card-text"><%= @task.priority %></p>
     <br><hr><br>
-    <h4 class="card-title fas fa-calendar-alt"> Time: </h4>
-    <p class="card-text"> From <strong class="<%= @date_color %>"><%= @task.start_date.strftime("%d/%m/%Y") %></strong> to <strong class="<%= @date_color %>"><%= @task.due_date.strftime("%d/%m/%Y") %> </strong></p>
+    <h4 class="card-title fas fa-calendar-alt  <%= date_color(@task) %>"> Time: </h4>
+    <p class="card-text"> From <strong><%= @task.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= @task.due_date.strftime("%d/%m/%Y") %> </strong></p>
     <br><hr><br>
     <h4 class="card-title fas fa-spinner"> Status: </h4>
       <div class="task-form">

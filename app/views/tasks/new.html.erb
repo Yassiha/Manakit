@@ -7,7 +7,7 @@
       <%= f.input :description, label: 'Description:', :input_html => { :rows => 7 , :style => 'width: 100%'} %>
       <%= f.input :start_date, label: 'Start-date' %>
       <%= f.input :due_date, label: 'End-date ' %>
-      <%= f.input :priority, label: 'Priority', collection: ['High', 'Moderate', 'Low'], default: 'Moderate' %>
+      <%= f.input :priority, label: 'Priority', collection: ['Critical', 'Moderate', 'Negligible'], default: 'Moderate' %>
       <button type="button" class="btn btn-outline-primary">
         <%= f.button :submit, value: 'Add task', "data-disable-with" => "Creating.." %>
       </button>
