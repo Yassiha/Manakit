@@ -64,14 +64,23 @@
       </div>
     <% end %>
   <% else %>
-    <% @missions.order(due_date: :asc).each do |mission|  %>
+    <% @missions.order(priority: :asc, due_date: :asc, status: :asc).each do |mission|  %>
       <%= link_to project_mission_path(mission.project, mission) do %>
         <div class="card-product">
           <div class="card-product-infos">
-            <h2><span class="fas fa-tasks"> <%= mission.title %></span></h2>
+            <h2><span class="fas fa-tasks <%= status_color(mission) %>"></span> <%= mission.title %></h2>
             <p><span class="far fa-calendar-alt"> <strong><%= mission.start_date.strftime("%d/%m/%Y") %></strong> to <strong><%= mission.due_date.strftime("%d/%m/%Y") %> </strong></span></p>
-            <p><span class="fas fa-star"> <%= mission.priority %></span></p>
-            <p><span class=" fas fa-spinner"> <%= "#{mission.status.to_s}%" %></span></p>
+            <div class="d-flex justify-content-between">
+            <p>
+              <span class="fas fa-star <%= priority_color(mission) %>"></span> <%= mission.priority %>
+            </p>
+            <p>
+              <span class="fas fa-spinner <%= status_color(mission) %>"><%= "#{mission.status.to_s}%"%></span>
+            <p>
+            </div>
+            <% mission.tasks.each do |task|  %>
+              |<span class="fas fa-thumbtack <%= status_color(task) %> "></span>
+              <% end  %>
           </div>
         </div>
       <% end %>
