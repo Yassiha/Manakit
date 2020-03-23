@@ -2,7 +2,7 @@
 <div class="container">
   <div class="form">
     <%= simple_form_for @mission, url: project_mission_path(@mission), method: :patch do |f| %>
-    <h2>Update your Mission</h2>
+    <h2>Update your action plan</h2>
     <%= f.input :title, label: "Title:" %>
     <%= f.input :description, label: "Description:", :input_html => { :rows => 7 , :style => 'width: 100%'} %>
     <%= f.input :start_date, label: "Start:" %>
