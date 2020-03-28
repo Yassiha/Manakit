@@ -9,7 +9,7 @@
   </div>
     <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
-        <%= link_to "", "#", method: :get, class: 'nav-link far fa-edit bigger-icon' %>
+        <%= link_to "", edit_project_mission_task_path(@task.mission.project, @task.mission, @task), method: :get, class: 'nav-link far fa-edit bigger-icon' %>
       </li>
       <li class="nav-item">
          <%= link_to "", "#", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'nav-link far fa-trash-alt bigger-icon' %></p>
@@ -17,7 +17,7 @@
     </ul>
     <p class="card-text"><%= simple_format(@task.description) %></p>
     <br><hr><br>
-    <h4 class="card-title fas fa-star"> Priority: </h4>
+    <h4 class="card-title fas fa-star"> Criticality: </h4>
     <p class="card-text"><%= @task.priority %></p>
     <br><hr><br>
     <h4 class="card-title fas fa-calendar-alt  <%= date_color(@task) %>"> Time: </h4>

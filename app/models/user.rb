@@ -11,5 +11,5 @@ class User < ApplicationRecord
   has_many :missions, through: :missions_members
   has_many :task_members
   has_many :users, through: :task_members
-  has_many :managing_projects, inverse_of: "manager", class_name: "Project"
+  has_many :managing_projects, inverse_of: "manager", class_name: "Project", dependent: :destroy
 end
