@@ -3,7 +3,7 @@
   <div class="form">
     <%= simple_form_for @user, url: project_add_project_member_index_path, method: :post do |f| %>
     <h2>Add a mate</h2>
-    <%= f.input :email, label: "Email:" %>
+    <%= f.input :email, label: "Email:", hint: "They have to create and account before!" %>
     <button type="button" class="btn btn-outline-primary" style="margin: 8px;">
       <%= f.button :submit, value: 'Start', "data-disable-with" => "Creating.." %>
     </button>
