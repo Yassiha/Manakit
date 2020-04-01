@@ -2,7 +2,7 @@
 <div class="container">
   <div class="form">
     <%= simple_form_for @task, url: project_mission_tasks_path, method: :post do |f| %>
-      <h2>New task</h2>
+      <h2 class="fas fa-thumbtack">+ New task</h2>
       <%= f.input :title, label: 'Titre:', required: true %>
       <%= f.input :description, label: 'Description:', :input_html => { :rows => 7 , :style => 'width: 100%'} %>
       <%= f.input :start_date, label: 'Start-date' %>
