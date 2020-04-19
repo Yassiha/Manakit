@@ -10,6 +10,18 @@ class MessagesController < ApplicationController
       redirect_to project_mission_topic_path(message.topic.mission.project, message.topic.mission, message.topic)
     end
 
+    def edit
+      @message = Message.find(params[:id])
+    end
+
+    def update
+      message = Message.find(params[:id])
+      message.update(params_messages)
+      message.save
+
+      redirect_to project_mission_topic_path(message.topic.mission.project, message.topic.mission, message.topic)
+    end
+
     def destroy
     end
 
