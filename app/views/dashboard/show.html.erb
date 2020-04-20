@@ -1,22 +1,45 @@
 <br>
 <div class="container">
+  <h1>DashBoard (under construction)</h1>
+  <br>
+  <% @projects.each do |project| %>
 
-<h1>Your projects list</h1>
-<br>
-<% @projects.each do |project| %>
-  <% if project.missions.count > 0 %>
-    <% project.missions.each do |mission| %>
-      <% @missions_finished += 1 if mission.status == 100 %>
+    <% if project.missions.count > 0 %>
+      <% project.missions.each do |mission| %>
+        <% @missions_finished += 1 if mission.status == 100 %>
+      <% end %>
     <% end %>
-  <% end %>
-  Title : <%= project.title  %>
-  <br>
-  Delivery date : <%= project.delivery_date.strftime("%d/%m/%Y") %>
-  <br>
-  Progress : <%= "#{project.status}%" %> |
-  <%= "Achieved missions #{@missions_finished}/#{project.missions.count}" %>
+
+    Objective : <%= project.title  %>
+    <br>
+    Delivery date : <%= project.delivery_date.strftime("%d/%m/%Y") %>
+    <br>
+    Progress : <%= "#{project.status}%" %> |
+    <%= "Achieved missions #{@missions_finished}/#{project.missions.count}" %> <br>
+    <br>
+
+    <h2>Actions plans</h2>
+    <% if project.missions.count == 0 %>
+      <%= "No actions plan established" %>
+    <% end %>
+
+    <% project.missions.each do |mission| %>
+      <% if mission.tasks.count > 0 %>
+        <% mission.tasks.each do |task| %>
+          <% @tasks_finished += 1 if task.status == 100 %>
+        <% end %>
+          Action plan: <%= mission.title %> <br>
+          Start: <%= mission.start_date.strftime("%d/%m/%Y") %> | End: <%= mission.due_date.strftime("%d/%m/%Y") %> <br>
+          Progress: <%= "#{mission.status}%" %> |
+          <%= "Achieved tasks #{@tasks_finished}/#{mission.tasks.count}" %> <br>
+          <% @tasks_finished = 0 %>
+          <% @missions_finished = 0 %>
+          <br>
+      <% end %>
+    <% end %>
   <br><hr><br>
-<% end %>
+  <% end %>
+</div>
 
 
 </div>
