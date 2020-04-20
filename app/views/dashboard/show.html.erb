@@ -1,7 +1,22 @@
 <br>
 <div class="container">
 
-<%= "Under Construction" %>
+<h1>Your projects list</h1>
+
+<% @projects.each do |project| %>
+  <% if project.missions.count > 0 %>
+    <% project.missions.each do |mission| %>
+      <% @missions_finished += 1 if mission.status == 100 %>
+    <% end %>
+  <% end %>
+  Title : <%= project.title  %>
+  <br>
+  Delivery date : <%= project.delivery_date.strftime("%d/%m/%Y") %>
+  <br>
+  Progress : <%= "#{project.status}%" %> |
+  <%= "Achieved missions #{@missions_finished}/#{project.missions.count}" %>
+  <br><hr><br>
+<% end %>
 
 
 </div>
