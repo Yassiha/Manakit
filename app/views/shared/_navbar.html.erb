@@ -1,5 +1,8 @@
-<div class="navbar navbar-expand-sm navbar-light sticky-top ">
-  <span class="d-flex justify-content-start"><%= render 'shared/back' %> </span>
+<div class="navbar navbar-expand-sm navbar-light sticky-top">
+  <span class="d-flex justify-content-end nav-link">
+  <%= link_to "L!", root_path, class: "logo bigger-icon red" %>
+
+    <span class="d-flex justify-content-start nav-link" id="navbar-id"><%= render 'shared/back' %> </span></span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
