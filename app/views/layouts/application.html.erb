@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script src="https://kit.fontawesome.com/6346a787d0.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
@@ -14,7 +15,9 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
+    <div class="wrapper">
     <%= yield %>
+    </div>
     <%= javascript_include_tag 'application' %>
 
     <%= javascript_pack_tag 'application' %>
