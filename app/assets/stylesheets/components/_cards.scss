@@ -1,3 +1,9 @@
+.container {
+  position: relative;
+  top: 32px;
+}
+
+
 .card-product {
   overflow: hidden;
   height: 120px;
@@ -63,7 +69,7 @@ a:hover {
 }
 
 .text-shadow {
-  text-shadow: 1px 2px 2px gray;
+  text-shadow: 1px 1px 5px gray;
 }
 
 .gray {
@@ -79,7 +85,7 @@ a:hover {
 }
 
 .red {
-  color: #bc002d !important;
+  color: #990621 !important;
 }
 
 .pink {
