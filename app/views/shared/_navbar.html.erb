@@ -1,38 +1,27 @@
-<div class="navbar navbar-expand-sm navbar-light sticky-top">
-  <span class="d-flex justify-content-end">
-  <%= link_to "L!", root_path, class: "logo bigger-icon red glow-red" %>
-
-    <span class="d-flex justify-content-start nav-link" id="navbar-id"><%= render 'shared/back' %> </span></span>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item d-flex justify-content-end">
-          <%= link_to "Home", projects_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item d-flex justify-content-end">
-          <%= link_to "My account", user_path(current_user), class: "nav-link" %>
-          <% if current_user.name == nil or current_user.name == "" %>
-           <div class="add_username">No username</div>
-          <% end %>
-        </li>
-        <li class="nav-item d-flex justify-content-end">
-          <%= link_to "Dashboard", dashboard_path(current_user) , class: "nav-link" %>
-        </li>
-        <li class="nav-item d-flex justify-content-end">
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
-        </li>
-      <% else %>
-        <li class="nav-item d-flex justify-content-end">
-          <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item d-flex justify-content-end">
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-        </li>
+<div class="navbar sticky-top">
+  <% if user_signed_in? %>
+    <div class="navbar-item nav-link">
+      <%= render 'shared/back' %>
+    </div>
+    <div class="navbar-item">
+      <%= link_to "My account", user_path(current_user) %>
+      <% if current_user.name == nil or current_user.name == "" %>
+        <div class="add_username">No username</div>
       <% end %>
-    </ul>
+    </div>
+    <div class="navbar-item">
+      <%= link_to "Dashboard", dashboard_path(current_user) %>
+    </div>
+    <div class="navbar-item">
+      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+    </div>
+  <% else %>
+    <div class="navbar-item d-flex justify-content-start">
+      <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
+      <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+    </div>
+  <% end %>
+  <div class="navbar-item">
+    <%= link_to "L!", projects_path, class: "logo bigger-icon red glow-red" %>
   </div>
 </div>
