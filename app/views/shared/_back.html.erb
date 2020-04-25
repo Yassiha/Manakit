@@ -1,5 +1,5 @@
 <% if params[:controller] == 'users' && params[:action] == 'show' %>
-  <%= link_to '', :back, class: 'fas fa-backward bigger-icon' %>
+  <%= link_to '', projects_path(current_user), class: 'fas fa-backward bigger-icon' %>
 <% elsif params[:controller] == 'pages' && params[:action] == 'home' %>
 
 <% elsif params[:controller] == 'dashboard' && params[:action] == 'show' %>
