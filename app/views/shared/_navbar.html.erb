@@ -3,6 +3,11 @@
     <div class="navbar-item nav-link">
       <%= render 'shared/back' %>
     </div>
+    <% if params[:controller] == 'pages' && params[:action] == 'home' %>
+      <div class="navbar-item">
+        <%= link_to "Home", projects_path(current_user) %>
+      </div>
+    <% end  %>
     <div class="navbar-item">
       <%= link_to "My account", user_path(current_user) %>
       <% if current_user.name == nil or current_user.name == "" %>
