@@ -7,9 +7,7 @@
     <%= f.input :description, label: "Description:", :input_html => { :rows => 7 , :style => 'width: 100%'} %>
     <%= f.input :delivery_date, label: "Delivery:" %>
 
-    <button type="button" class="btn btn-outline-primary" style="margin: 8px;">
-      <%= f.button :submit, value: 'Update', "data-disable-with" => "Creating.." %>
-    </button>
+    <%= f.button :submit, value: 'Update', "data-disable-with" => "Creating..", class:"btn btn-outline-primary" %>
   <% end %>
   </div>
 

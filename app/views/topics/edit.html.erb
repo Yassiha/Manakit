@@ -5,10 +5,7 @@
     <h2 class="far fa-edit"> Update your topic</h2>
     <%= f.input :title, label: "Title:" %>
     <%= f.input :status, label: 'Status', collection: ['Open', 'Close'], required: true %>
-
-    <button type="button" class="btn btn-outline-primary" style="margin: 8px;">
-      <%= f.button :submit, value: 'Update', "data-disable-with" => "Creating.." %>
-    </button>
+    <%= f.button :submit, value: 'Update', "data-disable-with" => "Creating..", class: "btn btn-outline-primary" %>
   <% end %>
   </div>
 

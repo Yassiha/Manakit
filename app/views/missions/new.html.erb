@@ -8,7 +8,7 @@
       <%= f.input :start_date, label: 'Start-date' %>
       <%= f.input :due_date, label: 'End-date ' %>
       <%= f.input :priority, label: 'Priority', collection: ['Negligible', 'Moderate', 'Critical'], default: 'Low' %>      <button type="button" class="btn btn-outline-primary">
-        <%= f.button :submit, value: 'Create', "data-disable-with" => "Creating.." %>
+        <%= f.button :submit, value: 'Create', "data-disable-with" => "Creating..", class: "btn btn-outline-primary" %>
     <% end %>
   </div>
 

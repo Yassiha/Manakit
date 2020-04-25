@@ -5,9 +5,7 @@
     <h2 class="far fa-edit"> Update your message</h2>
     <%= f.input :content, label: "Content:" %>
 
-    <button type="button" class="btn btn-outline-primary" style="margin: 8px;">
-      <%= f.button :submit, value: 'Update', "data-disable-with" => "Creating.." %>
-    </button>
+      <%= f.button :submit, value: 'Update', "data-disable-with" => "Creating..", class:"btn btn-outline-primary" %>
   <% end %>
   </div>
 
