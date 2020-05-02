@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
     project.save
     ProjectMember.create(user: current_user, project: project)
 
-    redirect_to projects_path
+    redirect_to project_path(project)
   end
 
   def update
