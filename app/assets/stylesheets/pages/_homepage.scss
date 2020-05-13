@@ -2,13 +2,18 @@
 .card-homepage {
     padding: 4em;
     padding-top: 4em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    vertical-align: center;
+    position: relative;
+    height: 100vh;
   .card-homepage-item {
-    text-align: left;
   }
 }
     .hashtags {
       font-weight: 800;
-      font-size: 1.3em;
+      font-size: 1em;
       text-transform: uppercase;
       letter-spacing: 0.5em;
     }
@@ -17,22 +22,18 @@
   margin: 4em;
   padding-top: 4em;
   .card-how-it-works-item {
-    text-align: right;
       }
 }
 
 .card-last-features {
   padding-top: 4em;
-  margin-left: 4em;
+  margin: 4em;
   .card-last-features-item {
-    text-align: left;
       }
 }
 
 .card-new-features {
-  margin-left: 4em;
-  padding-top: 4em;
+  margin: 4em;
   .card-new-features-item {
-    text-align: left;
       }
 }
