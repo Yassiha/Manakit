@@ -111,3 +111,21 @@ a:hover {
 .card-content {
   padding: 8px;
 }
+
+
+.hint {
+    opacity: 0.0;
+    width: 80px;
+    overflow: hidden;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+    overflow: visible;
+}
+
+.nav-item:hover .hint {
+    opacity: 1;
+    overflow: hidden;
+}

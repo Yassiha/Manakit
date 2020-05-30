@@ -11,20 +11,26 @@
       <ul class="nav nav-pills card-header-pills"><i class=""></i>
         <li class="nav-item">
           <%= link_to "+", new_project_mission_task_path(@mission.project, @mission), class: 'nav-link fas fa-thumbtack bigger-icon'  %>
+                    <div class="hint">New <br><i class="fas fa-thumbtack"> task</i> </div>
         </li>
         <li class="nav-item">
           <%= link_to "+", new_project_mission_topic_path(@mission.project, @mission), class: 'nav-link far fa-comments bigger-icon'  %>
+          <div class="hint">New <i class="far fa-comments"> topic</i> </div>
+
         </li>
         <% if current_user == @mission.project.manager%>
           <li class="nav-item">
             <%= link_to "", edit_project_mission_path(@mission.project, @mission), method: :get, class: 'nav-link far fa-edit bigger-icon' %>
+            <div class="hint">Edit <i class="fas fa-tasks"> action plan</i> </div>
+
           </li>
           <li class="nav-item">
-             <%= link_to "", "#", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'nav-link far fa-trash-alt bigger-icon' %></p>
+            <%= link_to "", "#", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'nav-link far fa-trash-alt bigger-icon' %>
+            <div class="hint red">Delete <i class="fas fa-tasks"> objective</i></div>
           </li>
         <% end %>
       </ul>
-      <br><hr><br>
+      <hr>
       <h4 class="card-title fas fa-star"> Priority: </h4>
       <p class="card-text"><%= @mission.priority %></p>
       <br><hr><br>
