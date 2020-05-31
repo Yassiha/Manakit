@@ -1,32 +1,33 @@
 <br>
 <div class="container">
-<% @array.reverse.each do |object| %>
+<% @array.sort_by(&:updated_at).reverse.each do |object| %>
   <% case object %>
     <% when Project %>
       <% if object.created_at == object.updated_at %>
-        <%= "New project added" %>
+        <p><%= link_to "+ " + object.title + " | New objective", project_path(object), class: "fas fa-hands-helping green" %></p>
       <% else %>
-        <%= "Project edited" %>
+        <p><%= link_to " " + object.title + " | Objective edited", project_path(object), class: "far fa-edit orange" %></p>
       <% end %>
     <% when Mission %>
       <% if object.created_at == object.updated_at %>
-        <%= "New mission added" %>
+        <p><%= link_to " " + object.title + " | New action plan", project_mission_path(object.project, object), class: "fas fa-tasks green" %></p>
       <% else %>
-        <%= "Mission edited" %>
+        <p><%= link_to " " + object.title + " | Action plan edited", project_mission_path(object.project, object), class: "fas fa-tasks orange" %></p>
       <% end %>
     <%  when Task %>
       <% if object.created_at == object.updated_at %>
-        <%= "New task added" %>
+        <p><%= link_to " " + object.status.to_s + "% |New task created", project_mission_task_path(object.mission.project, object.mission, object), class: "fas fa-tasks green" %></p>
       <% else %>
-        <%= "Task edited" %>
+        <p><%= link_to " " + object.status.to_s + "% |Task updated", project_mission_task_path(object.mission.project, object.mission, object), class: "fas fa-tasks orange" %></p>
       <% end %>
     <% when Topic %>
       <% if object.created_at == object.updated_at %>
-        <%= "New topic added" %>
+        <p><%= "New topic added" %></p>
       <% else %>
-        <%= "Topic edited" %>
+        <p><%= "Topic edited" %></p>
       <% end %>
     <% end %>
+    <hr>
   <% end %>
 </div>
 

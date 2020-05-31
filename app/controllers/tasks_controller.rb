@@ -27,7 +27,6 @@ class TasksController < ApplicationController
   def update
     task = Task.find(params[:id])
     task.update(task_params)
-    task.save
     task.status = task_params[:status].to_i
     if task_params[:finish] == "1"
       task.finish = true
@@ -37,8 +36,8 @@ class TasksController < ApplicationController
     task.finish = true if task.status == 100
     task.status = 100 if task.finish == true
     task.finish = false if task.status < 100
-    task.save
     update_status(task.mission)
+    task.save
 
     redirect_to project_mission_task_path(task.mission.project, task.mission, task)
   end
