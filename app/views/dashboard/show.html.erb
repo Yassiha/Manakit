@@ -1,38 +1,37 @@
 <br>
 <div class="container">
-  <img style="width: 100%;" src="http://fight4dream.com/iamdemon/img/IamDemon_Website_UnderConstruction_Banner-complete-n.png" alt="under construction">
-  <br><hr><br>
-  <% @projects.each do |project| %>
-    <% if project.missions.count > 0 %>
-      <% project.missions.each do |mission| %>
-        <% @missions_finished += 1 if mission.status == 100 %>
-      <% end %>
+  <h1>Last updated tasks</h1>
+  <% if @tasks[0] %>
+    <% @tasks[0].order(updated_at: :desc).each do |task| %>
+      <%= task.title + " | " + task.mission.project.title + " | " + task.mission.title %>
+      <br>
     <% end %>
-
-    <div class="dashboard-box">
-      <p><i class="fas fa-hands-helping space"> Objective : <%= project.title  %>  </i></p>
-      <p><i class="fas fa-calendar-alt space"> Delivery date : <%= project.delivery_date.strftime("%d/%m/%Y") %> </i></p>
-      <p><i class="fas fa-spinner space"> Progress : <%= "#{project.status}%" %> |
-      <%= "Achieved missions #{@missions_finished}/#{project.missions.count}" %> </i></p>
-    </div>
-    <br>
-    <% if project.missions.count == 0 %>
-      <p><%= "No actions plan established" %></p>
+  <% end  %>
+<br>
+  <h1>Last updated action plans</h1>
+    <% if @missions[0] %>
+      <% @missions[0].order(updated_at: :desc).each do |mission| %>
+        <%= mission.title + " | " + mission.project.title %>
+      <br>
     <% end %>
-    <% project.missions.each do |mission| %>
-        <% mission.tasks.each do |task| %>
-          <% @tasks_finished += 1 if task.status == 100 if mission.tasks.count > 0 %>
+  <% end  %>
+<br>
+  <h1>Last updated projects</h1>
+    <% if @projects[0] %>
+      <% @projects[0].order(updated_at: :desc).each do |project| %>
+        <%= project.title %>
+      <br>
+    <% end %>
+  <% end  %>
+<br>
+  <h1>Last updated topics</h1>
+    <% if @topics[0] %>
+      <% @topics[0].order(updated_at: :desc).each do |topic| %>
+        <% if topic.messages.count > 0 %>
+          <h5><%= topic.title %></h5>
+          <p>Last message : <%= topic.messages.last.content %></p>
         <% end %>
-        <div class="dashboard-box">
-          Action plan: <%= mission.title %> <br>
-          Start: <%= mission.start_date.strftime("%d/%m/%Y") %> | End: <%= mission.due_date.strftime("%d/%m/%Y") %> <br>
-          Progress: <%= "#{mission.status}%" %> |
-          <%= "Achieved tasks #{@tasks_finished}/#{mission.tasks.count}" %> <br>
-        </div>
-          <% @tasks_finished = 0 %>
-          <% @missions_finished = 0 %>
-          <br>
+      <br>
     <% end %>
-    <br><hr><br>
-  <% end %>
+  <% end  %>
 </div>

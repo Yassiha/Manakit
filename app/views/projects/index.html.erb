@@ -10,13 +10,30 @@
   </div>
   <br>
   <% @projects.each do |project|  %>
-    <%= link_to project_path(project) do %>
-      <div class="card-product">
-        <div class="card-product-infos">
-          <h1><span class="fas fa-hands-helping middle-icon"></span> <%= project.title %></h1>
+    <div class="projects-cards">
+      <%= link_to project_path(project) do %>
+        <div class="justify-content-center">
+          <div class="project-card">
+            <div class="project-card-title">
+              <h1 class="text-center">
+                <span class="fas fa-hands-helping middle-icon"></span>
+                <%= project.title %>
+              </h1>
+              <div class="ldBar label-center" data-value="<%= project.status %>" data-preset="stripe"> </div>
+              <br><hr>
+              <div class="missions-card">
+                <% project.missions.each do |mission| %>
+                  <%= mission.title %> <br>
+                  <div class='ldBar label-center' data-preset="line" data-value="<%= mission.status %>"></div>
+                  <br>
+                <% end %>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
     <br>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+

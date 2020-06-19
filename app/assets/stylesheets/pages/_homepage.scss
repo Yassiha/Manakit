@@ -20,7 +20,6 @@
 
 .card-how-it-works {
   margin: 4em;
-  padding-top: 4em;
   .card-how-it-works-item {
       }
 }
@@ -36,4 +35,19 @@
   margin: 4em;
   .card-new-features-item {
       }
+}
+
+.white-background {
+  border-top: 3px solid #bc002d;
+  border-bottom: 3px solid #bc002d;
+
+  width: 50%;
+}
+
+.app-infos {
+  height: 100vh;
+      display: flex;
+    justify-content: center;
+    flex-direction: column;
+    vertical-align: center;
 }

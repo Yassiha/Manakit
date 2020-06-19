@@ -25,6 +25,7 @@ class MissionsController < ApplicationController
   def create
     mission = Mission.new(mission_params)
     mission.project = Project.find(params[:project_id])
+    mission.status = 0
     mission.save
     MissionMember.create(mission: mission, user: current_user)
     mission.project.users.each do |user|
