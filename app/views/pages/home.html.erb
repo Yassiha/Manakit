@@ -3,12 +3,12 @@
     <br>
     <p class="card-homepage-item hashtags">
       <h1 class="ml1">
-    <span class="text-wrapper">
-      <span class="line line1"></span>
-      <span class="letters logo huge text-shadow">L!ghtapp</span>
-      <span class="line line2"></span>
-    </span>
-  </h1>
+        <span class="text-wrapper">
+          <span class="line line1"></span>
+          <span class="letters logo huge text-shadow">L!ghtapp</span>
+          <span class="line line2"></span>
+        </span>
+     </h1>
     </p>
     <p class="card-homepage-item ">
       <span class="ml11">
@@ -28,36 +28,34 @@
     </p>
   </div>
 </div>
-<div class="app-infos">
-  <div class="card-how-it-works text-shadow white-background">
-    <br>
-    <p class="card-how-it-works-item hashtags"><strong>How it works</strong> </p>
-    <p class="card-how-it-works-item">
-      Start by defining an <i class="fas fa-hands-helping"> Objective</i>,
-      then define one or many <i class="fas fa-tasks"> Action plans</i> and <i class="fas fa-thumbtack"> Tasks</i>.
-    </p>
-    <p class="card-how-it-works-item">
-      Add some <i class="fas fa-user">+ Partners</i>, some <i class="fas fa-comments">+ Topics</i>
-      and that's it ! Let's the magic happend !
-    </p>
-    <br>
-    <p class="card-last-features-item hashtags "><strong>Last Features</strong> </p>
-    <p class="card-last-features-item"> Your tasks are now better organized and it is even easier to identify priorities! <br>
-       You don't have to do anything, we've taken care of everything.</p>
-      <p class="card-new-features-item hashtags"><strong>New Feature</strong> </p>
-      <p class="card-new-features-item"> It's nowwww possible to add a small chat to your action plans. How cool is that ? </p>
+<div class="d-flex justify-content-center">
+  <div class="app-infos">
+    <div class="card-how-it-works text-shadow white-background">
+      <br>
+      <p class="card-how-it-works-item hashtags"><strong>How it works</strong> </p>
+      <p class="card-how-it-works-item">
+        Start by defining an <i class="fas fa-hands-helping"> Objective</i>,
+        then define one or many <i class="fas fa-tasks"> Action plans</i> and <i class="fas fa-thumbtack"> Tasks</i>.
+      </p>
+      <p class="card-how-it-works-item">
+        Add some <i class="fas fa-user">+ Partners</i>, some <i class="fas fa-comments">+ Topics</i>
+        and that's it ! Let's the magic happend !
+      </p>
+      <br>
+      <p class="card-last-features-item hashtags "><strong>Last Features</strong> </p>
+      <p class="card-last-features-item"> Your tasks are now better organized and it is even easier to identify priorities! <br>
+         You don't have to do anything, we've taken care of everything.</p>
+        <p class="card-new-features-item hashtags"><strong>New Feature</strong> </p>
+        <p class="card-new-features-item"> It's nowwww possible to add a small chat to your action plans. How cool is that ? </p>
+      </div>
     </div>
   </div>
 
 <footer class="page-footer font-small stylish-color-dark pt-4">
-
-  <!-- Footer Links -->
   <div class="container text-center text-md-left">
-
-    <!-- Grid row -->
+  <hr class="red-line" id="fix-red-line">
     <div class="row">
 
-      <!-- Grid column -->
       <div class="col-md-4 mx-auto">
 
         <!-- Content -->
@@ -65,25 +63,9 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula nibh in felis pharetra, at scelerisque lacus pharetra.</p>
         <br>
       </div>
-      <!-- Grid column -->
 
-      <hr class="clearfix w-100 d-md-none">
-
-
-      <!-- Grid column -->
-      <hr class="clearfix w-100 d-md-none">
-
-      <!-- Grid column -->
       <div class="col-md-2 mx-auto">
-
-        <!-- Links -->
-
       </div>
-      <!-- Grid column -->
-
-      <hr class="clearfix w-100 d-md-none">
-
-      <!-- Grid column -->
       <div class="col-md-2 mx-auto">
 
         <!-- Links -->
@@ -107,25 +89,20 @@
   </div>
   <!-- Footer Links -->
 
-  <hr>
 
   <!-- Call to action -->
   <ul class="list-unstyled list-inline text-center py-2">
+  <hr class="red-line">
     <li class="list-inline-item">
       <h5 class="mb-1">Its 100% free !</h5>
     </li>
     <li class="list-inline-item">
-        <a href="#">
-              <class class="btn-sign-up">
-                <i class="fas fa-box-open"></i>
-                Sign up
-              </class>
-            </a>
+      <%= link_to " Sign up", new_user_registration_path, class: "fas fa-box-open btn-sign-up lighter" %>
     </li>
   </ul>
   <!-- Call to action -->
 
-  <hr>
+  <hr class="red-line">
 
   <!-- Social buttons -->
   <ul class="list-unstyled list-inline text-center">

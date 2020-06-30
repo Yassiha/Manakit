@@ -20,15 +20,7 @@
                 <%= project.title %>
               </h1>
               <div class="ldBar label-center" data-value="<%= project.status %>" data-preset="stripe"> </div>
-              <br><hr>
-              <div class="missions-card">
-                <% project.missions.each do |mission| %>
-                  <%= mission.title %> <br>
-                  <div class='ldBar label-center' data-preset="line" data-value="<%= mission.status %>"></div>
-                  <br>
-                <% end %>
-              </div>
-            </div>
+              <br>
           </div>
         </div>
       <% end %>
