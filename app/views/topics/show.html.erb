@@ -6,11 +6,11 @@
         <% if current_user == @topic.mission.project.manager%>
           <li class="nav-item">
             <%= link_to "", edit_project_mission_topic_path(@topic.mission.project, @topic.mission, @topic), method: :get, class: 'nav-link far fa-edit bigger-icon' %>
-            <div class="hint">Edit <br> <i class="far fa-comments"> topic</i></div>
+            <div class="hint">Edit topic</i></div>
           </li>
           <li class="nav-item">
              <%= link_to "", project_mission_topic_path(@topic.mission.project, @topic.mission, @topic), method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'nav-link far fa-trash-alt bigger-icon' %>
-             <div class="hint red">Delete <br> <i class="far fa-comments"> topic</i></div>
+             <div class="hint red">Delete topic</i></div>
           </li>
         <% end %>
       </ul>

@@ -10,25 +10,25 @@
       <ul class="nav nav-pills card-header-pills">
         <li class="nav-item">
           <%= link_to "+", new_project_mission_path(@project), class: 'nav-link fas fa-tasks bigger-icon' %>
-          <div class="hint">New <i class="fas fa-tasks"> action plan</i> </div>
+          <div class="hint">New action plan</i> </div>
         </li>
         <% if current_user == @project.manager %>
           <li class="nav-item">
             <%= link_to "+", new_project_add_project_member_path(@project), class: 'nav-link fas fa-user bigger-icon' %>
-            <div class="hint">New <i class="fas fa-users"> team member</i></div>
+            <div class="hint">New team member</i></div>
           </li>
         <% end %>
         <% if current_user == @project.manager %>
           <li class="nav-item">
             <%= link_to "", edit_project_path(@project), method: :get, class: 'nav-link far fa-edit bigger-icon' %>
-            <div class="hint">Edit <i class="fas fa-hands-helping"> objective</i></div>
+            <div class="hint">Edit objective</i></div>
 
           </li>
         <% end %>
         <% if current_user == @project.manager %>
           <li class="nav-item">
-            <%= link_to "", @project, method: :delete, data: { confirm: 'WARNING you will delete an entire Project!', disable_with: 'loading...' }, class: 'nav-link far fa-trash-alt bigger-icon' %>
-          <div class="hint red">Delete <i class="fas fa-hands-helping"> objective</i></div>
+            <%= link_to "", @project, method: :delete, data: { confirm: 'WARNING you will delete an entire objective!', disable_with: 'loading...' }, class: 'nav-link far fa-trash-alt bigger-icon' %>
+          <div class="hint red">Delete objective</i></div>
           </li>
 
         <% end %>
