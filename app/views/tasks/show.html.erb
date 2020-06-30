@@ -30,7 +30,7 @@
     <h4 class="card-title fas fa-spinner"> Status: </h4>
       <div class="task-form">
         <%= simple_form_for @task, url: project_mission_task_path(params[:project_id], params[:mission_id], @task), method: :patch do |f| %>
-          <%= f.input :status, label: false, collection: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100] %>
+          <%= f.input :status, as: :range, label: false  %>
           <%= f.input :finish, label: 'Done!', hint: 'If checked as done, Status is automatically set to 100%'  %>
             <%= f.button :submit, value: 'Update', "data-disable-with" => "Creating.." %>
           </button>
