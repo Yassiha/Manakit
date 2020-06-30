@@ -12,6 +12,5 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: %w[show update destroy]
-  resources :dashboard, only: %w[show]
 
 end
