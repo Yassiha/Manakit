@@ -46,7 +46,6 @@ class MissionsController < ApplicationController
     mission = Mission.find(params[:id])
     mission.update(mission_params)
     mission.save
-
     redirect_to project_mission_path(mission)
   end
 
